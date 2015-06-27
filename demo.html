@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>carusela.js</title>
+
+    <style>
+
+
+        html, body {
+            direction: rtl;
+            text-align: right;
+        }
+
+        ul, li {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+
+        div {
+            width: 600px;
+            overflow: scroll;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        ul {
+            background: blue;
+            height: 100px;
+            overflow: scroll;
+            display: block;
+        }
+
+        li {
+            background: red;
+            height: 100px;
+            width: 100px;
+            display: inline-block;
+        }
+
+        button {
+            border-radius: 50%;
+            background: green;
+            border: 0;
+        }
+    </style>
+</head>
+<body>
+
+<ul id="demo">
+    <li>1
+    <li>2
+    <li>3
+    <li>4
+    <li>5
+    <li>6
+    <li>6
+    <li>7
+    <li>8
+    <li>9
+    <li>10
+    <li>11
+    <li>12
+</ul>
+
+<script src="src/carusela.js"></script>
+<script>
+
+    var element     = document.getElementById('demo'),
+        wrapper     = document.createElement('div'),
+        moveStart   = document.createElement('button'),
+        moveEnd     = document.createElement('button'),
+        getWidth    = function () {
+            var width = 0;
+
+            for (var i = 0; i < element.children.length; i++) {
+                width = width + element.children[i].offsetWidth;
+            }
+
+            return width;
+        },
+        getCurrentFold = function(scroll, width) {
+            return Math.ceil(width / scroll);
+        };
+
+    element.style.width = getWidth() + 'px';
+
+    moveStart.innerText = '<';
+    //moveStart.disabled  = true;
+    moveEnd.innerText   = '>';
+
+    moveEnd.addEventListener('click', function() {
+        wrapper.scrollLeft += 100;
+    });
+
+    moveStart.addEventListener('click', function() {
+        wrapper.scrollLeft -= 100;
+    });
+
+    // Add virtual DOM elements
+    element.parentNode.replaceChild(wrapper, element);
+    wrapper.appendChild(element);
+    wrapper.parentNode.appendChild(moveStart);
+    wrapper.parentNode.appendChild(moveEnd);
+
+    var folds = Math.ceil(element.offsetWidth / wrapper.offsetWidth);
+
+    alert(folds);
+
+    wrapper.addEventListener('scroll', function() {
+        console.log(getCurrentFold(wrapper.scrollLeft + wrapper.offsetWidth, element.offsetWidth));
+    });
+
+</script>
+</body>
+</html>
