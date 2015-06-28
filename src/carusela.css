@@ -17,6 +17,13 @@ p {
 	margin-bottom: 40px;
 }
 
+hr {
+	margin: 50px 0;
+	border: 0;
+	height: 1px;
+	background: #e7e7e7;
+}
+
 footer {
 	margin-top: 50px;
 	text-align: center;
@@ -28,6 +35,10 @@ footer .love {
 	color: #ff3566;
 	font-weight: bold;
 	font-size: 18px;
+}
+
+a {
+	color: #1978bb;
 }
 
 ul, li {
@@ -65,13 +76,13 @@ section {
 
 button {
 	border-radius: 25%;
-	background: #808080;
+	background: #e1e1e1;
 	border: solid 5px #ffffff;
 	width: 80px;
 	height: 80px;
 	line-height: 46px;
 	text-align: center;
-	color: #ffffff;
+	color: #5d5d5d;
 	position: absolute;
 	top: 50%;
 	margin-top: -40px;
@@ -79,7 +90,7 @@ button {
 }
 
 button:focus {
-	background: #6f6f6f;
+	background: #c7c7c7;
 }
 
 button.backward {
@@ -90,3 +101,14 @@ button.forward {
 	right: -60px;
 }
 
+.links {
+	width: 350px;
+	margin: 0 auto;
+}
+
+.links li {
+	display: inline-block;
+	text-align: center;
+	width: 50%;
+	font-weight: 200;
+}
