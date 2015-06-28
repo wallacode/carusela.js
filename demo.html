@@ -28,6 +28,7 @@
             height: 100px;
             overflow: scroll;
             display: block;
+            white-space: nowrap;
         }
 
         li {
@@ -69,20 +70,10 @@
         wrapper     = document.createElement('div'),
         moveStart   = document.createElement('button'),
         moveEnd     = document.createElement('button'),
-        getWidth    = function () {
-            var width = 0;
 
-            for (var i = 0; i < element.children.length; i++) {
-                width = width + element.children[i].offsetWidth;
-            }
-
-            return width;
-        },
         getCurrentFold = function(scroll, width) {
             return Math.ceil(width / scroll);
         };
-
-    element.style.width = getWidth() + 'px';
 
     moveStart.innerText = '<';
     //moveStart.disabled  = true;
