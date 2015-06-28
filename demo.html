@@ -5,7 +5,6 @@
 
     <style>
 
-
         html, body {
             direction: rtl;
             text-align: right;
@@ -112,14 +111,10 @@
     moveEnd.className   = 'end';
 
     moveEnd.addEventListener('click', function() {
-        console.log(wrapper);
-        console.log(wrapper.scrollLeft);
         wrapper.scrollLeft -= 100;
     });
 
     moveStart.addEventListener('click', function() {
-        console.log(wrapper);
-        console.log(wrapper.scrollLeft);
         wrapper.scrollLeft += 100;
     });
 
