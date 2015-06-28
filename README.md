@@ -1,6 +1,6 @@
 # Carusela.js
 
-Overflow scroll based carousel, aiming for minimalist JS code manipulation by using CSS 'scroll' as animation animation.
+Overflow scroll based carousel, aiming for minimalist JS code manipulations by using CSS 'scroll' as animation animation.
 
 ## Features
 
