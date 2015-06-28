@@ -7,6 +7,18 @@ Overflow scroll based carousel, aiming for minimalist JS code manipulation by us
 * Back & forward buttons
 * Using -webkit-overflow-scrolling for momentum scrolling
 
+## Getting Started
+
+Add to your code the carusela.js and carusela.css files.
+
+    <link href="src/carusela.css" type="text/css" rel="stylesheet"/>
+
+    <script src="src/carusela.js"></script>
+
+Initialize the Carusela class with any DOM element that contains any number of direct children.
+
+    var carusela = new window.Carusela(document.getElementById('demo'));
+
 ## Roadmap
 
 * Add build
