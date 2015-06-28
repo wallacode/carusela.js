@@ -17,51 +17,78 @@
             list-style: none;
         }
 
+        section {
+            position: relative;
+            width: 800px;
+            margin: 0 auto;
+        }
+
         div {
-            width: 600px;
-            overflow: scroll;
+            position: relative;
+            overflow: hidden;
             -webkit-overflow-scrolling: touch;
         }
 
         ul {
-            background: blue;
-            height: 100px;
-            overflow: scroll;
-            display: block;
+            height: 152px;
+            display: inline-block;
             white-space: nowrap;
         }
 
         li {
-            background: red;
-            height: 100px;
-            width: 100px;
+            height: 152px;
+            width: 152px;
             display: inline-block;
         }
 
         button {
-            border-radius: 50%;
-            background: green;
+            border-radius: 25%;
+            background: #808080;
             border: 0;
+            width: 50px;
+            height: 50px;
+            line-height: 46px;
+            text-align: center;
+            color: #ffffff;
+            position: absolute;
+            top: 50%;
+            margin-top: -25px;
+            outline:none;
         }
+
+        button:focus {
+            background: #6f6f6f;
+        }
+
+        button.start {
+            right: -25px;
+        }
+
+        button.end {
+            left: -25px;
+        }
+
     </style>
 </head>
 <body>
 
-<ul id="demo">
-    <li>1
-    <li>2
-    <li>3
-    <li>4
-    <li>5
-    <li>6
-    <li>6
-    <li>7
-    <li>8
-    <li>9
-    <li>10
-    <li>11
-    <li>12
-</ul>
+<section>
+    <ul id="demo">
+        <li><img src="http://www.walla.co.il/images/apple/common-color-1.png" alt="Slide #1">
+        <li><img src="http://www.walla.co.il/images/apple/common-color-2.png" alt="Slide #2">
+        <li><img src="http://www.walla.co.il/images/apple/common-color-3.png" alt="Slide #3">
+        <li><img src="http://www.walla.co.il/images/apple/common-color-4.png" alt="Slide #4">
+        <li><img src="http://www.walla.co.il/images/apple/common-color-5.png" alt="Slide #5">
+        <li><img src="http://www.walla.co.il/images/apple/common-color-6.png" alt="Slide #6">
+        <li><img src="http://www.walla.co.il/images/apple/common-color-7.png" alt="Slide #7">
+        <li><img src="http://www.walla.co.il/images/apple/common-color-8.png" alt="Slide #8">
+        <li><img src="http://www.walla.co.il/images/apple/common-color-9.png" alt="Slide #9">
+        <li><img src="http://www.walla.co.il/images/apple/common-color-10.png" alt="Slide #10">
+        <li><img src="http://www.walla.co.il/images/apple/common-color-11.png" alt="Slide #11">
+        <li><img src="http://www.walla.co.il/images/apple/common-color-12.png" alt="Slide #12">
+        <li><img src="http://www.walla.co.il/images/apple/common-color-13.png" alt="Slide #13">
+    </ul>
+</section>
 
 <script src="src/carusela.js"></script>
 <script>
@@ -75,16 +102,25 @@
             return Math.ceil(width / scroll);
         };
 
-    moveStart.innerText = '<';
+    // Apply styles
+    wrapper.style.overflow = 'scroll';
+
+    moveStart.innerText = 'Start';
+    moveStart.className = 'start';
     //moveStart.disabled  = true;
-    moveEnd.innerText   = '>';
+    moveEnd.innerText   = 'End';
+    moveEnd.className   = 'end';
 
     moveEnd.addEventListener('click', function() {
-        wrapper.scrollLeft += 100;
+        console.log(wrapper);
+        console.log(wrapper.scrollLeft);
+        wrapper.scrollLeft -= 100;
     });
 
     moveStart.addEventListener('click', function() {
-        wrapper.scrollLeft -= 100;
+        console.log(wrapper);
+        console.log(wrapper.scrollLeft);
+        wrapper.scrollLeft += 100;
     });
 
     // Add 'virtual' DOM elements
@@ -94,8 +130,6 @@
     wrapper.parentNode.appendChild(moveEnd);
 
     var folds = Math.ceil(element.offsetWidth / wrapper.offsetWidth);
-
-    alert(folds);
 
     wrapper.addEventListener('scroll', function() {
         console.log(getCurrentFold(wrapper.scrollLeft + wrapper.offsetWidth, element.offsetWidth));
