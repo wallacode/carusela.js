@@ -11,9 +11,10 @@ Overflow scroll based carousel, aiming for minimalist JS code manipulations by u
 
 Add to your code the carusela.js and carusela.css files.
 
-    <link href="src/carusela.css" type="text/css" rel="stylesheet"/>
-
-    <script src="src/carusela.js"></script>
+```html
+<link href="src/carusela.css" type="text/css" rel="stylesheet"/>
+<script src="src/carusela.js"></script>
+```
 
 Initialize the Carusela class with any DOM element that contains any number of direct children.
 
