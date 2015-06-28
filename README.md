@@ -2,6 +2,8 @@
 
 Overflow scroll based carousel, aiming for minimalist JS code manipulations by using CSS 'scroll' as animation animation.
 
+![Demo](https://raw.githubusercontent.com/wallacode/carusela.js/master/images/demo-1.png "Demo")
+
 ## Features
 
 * Back & forward buttons
