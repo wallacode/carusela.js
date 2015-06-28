@@ -1,0 +1,92 @@
+html, body {
+	font-family: "Source Sans Pro", sans-serif;
+	width: 800px;
+	margin: 0 auto;
+	xdirection: rtl;
+	xtext-align: right;
+	-webkit-font-smoothing: antialiased;
+}
+
+h1 {
+	font-weight: 200;
+	font-size: 52px;
+}
+
+p {
+	font-weight: 200;
+	margin-bottom: 40px;
+}
+
+footer {
+	margin-top: 50px;
+	text-align: center;
+	font-weight: 300;
+	line-height: 28px;
+}
+
+footer .love {
+	color: #ff3566;
+	font-weight: bold;
+	font-size: 18px;
+}
+
+ul, li {
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+
+section {
+	position: relative;
+}
+
+.carusela {
+	position: relative;
+	overflow: scroll;
+	-webkit-overflow-scrolling: touch;
+}
+
+.carusela ul {
+	height: 152px;
+	display: inline-block;
+	white-space: nowrap;
+}
+
+.carusela ul li {
+	height: 152px;
+	width: 152px;
+	margin-left: 10px;
+	display: inline-block;
+}
+
+.carusela ul li:first-child {
+	margin-left: 0;
+}
+
+button {
+	border-radius: 25%;
+	background: #808080;
+	border: solid 5px #ffffff;
+	width: 80px;
+	height: 80px;
+	line-height: 46px;
+	text-align: center;
+	color: #ffffff;
+	position: absolute;
+	top: 50%;
+	margin-top: -40px;
+	outline:none;
+}
+
+button:focus {
+	background: #6f6f6f;
+}
+
+button.backward {
+	left: -60px;
+}
+
+button.forward {
+	right: -60px;
+}
+
