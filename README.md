@@ -22,12 +22,12 @@ var carusela = new window.Carusela(document.getElementById('demo'));
 ```
 
 ```html
-    <ul id="demo">
-        <li><img src="http://www.walla.co.il/images/apple/common-color-1.png" alt="Slide #1">
-        <li><img src="http://www.walla.co.il/images/apple/common-color-2.png" alt="Slide #2">
-        <li><img src="http://www.walla.co.il/images/apple/common-color-3.png" alt="Slide #3">
-        <li><img src="http://www.walla.co.il/images/apple/common-color-4.png" alt="Slide #4">
-    </ul>
+<ul id="demo">
+    <li><img src="http://www.walla.co.il/images/apple/common-color-1.png" alt="Slide #1">
+    <li><img src="http://www.walla.co.il/images/apple/common-color-2.png" alt="Slide #2">
+    <li><img src="http://www.walla.co.il/images/apple/common-color-3.png" alt="Slide #3">
+    <li><img src="http://www.walla.co.il/images/apple/common-color-4.png" alt="Slide #4">
+</ul>
 ```
 
 ## Roadmap
