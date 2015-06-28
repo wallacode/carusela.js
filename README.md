@@ -21,9 +21,12 @@ Initialize the Carusela class with any DOM element that contains any number of d
 
 ## Roadmap
 
+Stuff we need to add...
+
 * Add build
 * List on bower
 * Add tests
+* Disable buttons when no scroll available
 * Add RTL support
 * Add folds support
 * Add optional values
