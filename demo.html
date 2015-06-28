@@ -2,76 +2,17 @@
 <html>
 <head>
     <title>carusela.js</title>
-
-    <style>
-
-        html, body {
-            direction: rtl;
-            text-align: right;
-        }
-
-        ul, li {
-            padding: 0;
-            margin: 0;
-            list-style: none;
-        }
-
-        section {
-            position: relative;
-            width: 800px;
-            margin: 0 auto;
-        }
-
-        div {
-            position: relative;
-            overflow: hidden;
-            -webkit-overflow-scrolling: touch;
-        }
-
-        ul {
-            height: 152px;
-            display: inline-block;
-            white-space: nowrap;
-        }
-
-        li {
-            height: 152px;
-            width: 152px;
-            display: inline-block;
-        }
-
-        button {
-            border-radius: 25%;
-            background: #808080;
-            border: 0;
-            width: 50px;
-            height: 50px;
-            line-height: 46px;
-            text-align: center;
-            color: #ffffff;
-            position: absolute;
-            top: 50%;
-            margin-top: -25px;
-            outline:none;
-        }
-
-        button:focus {
-            background: #6f6f6f;
-        }
-
-        button.start {
-            right: -25px;
-        }
-
-        button.end {
-            left: -25px;
-        }
-
-    </style>
+    <link href="src/carusela.css" type="text/css" rel="stylesheet"/>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 </head>
 <body>
 
+<h1>Carusela.js</h1>
+
+<p>Overflow scroll based carousel, aiming for minimalist JS code manipulation.</p>
+
 <section>
+
     <ul id="demo">
         <li><img src="http://www.walla.co.il/images/apple/common-color-1.png" alt="Slide #1">
         <li><img src="http://www.walla.co.il/images/apple/common-color-2.png" alt="Slide #2">
@@ -89,47 +30,27 @@
     </ul>
 </section>
 
+<ul class="links">
+    <li><i class="fa fa-github"></i> Fork on Github</li>
+    <li><i class="fa fa-twitter"></i> Follow us on Twitter</li>
+</ul>
+
+<footer>
+    <i class="fa fa-code"></i> with <i class="fa fa-heart love"></i> @wallacode
+</footer>
+
 <script src="src/carusela.js"></script>
 <script>
 
-    var element     = document.getElementById('demo'),
-        wrapper     = document.createElement('div'),
-        moveStart   = document.createElement('button'),
-        moveEnd     = document.createElement('button'),
-
-        getCurrentFold = function(scroll, width) {
-            return Math.ceil(width / scroll);
-        };
-
-    // Apply styles
-    wrapper.style.overflow = 'scroll';
-
-    moveStart.innerText = 'Start';
-    moveStart.className = 'start';
-    //moveStart.disabled  = true;
-    moveEnd.innerText   = 'End';
-    moveEnd.className   = 'end';
-
-    moveEnd.addEventListener('click', function() {
-        wrapper.scrollLeft -= 100;
-    });
-
-    moveStart.addEventListener('click', function() {
-        wrapper.scrollLeft += 100;
-    });
-
-    // Add 'virtual' DOM elements
-    element.parentNode.replaceChild(wrapper, element);
-    wrapper.appendChild(element);
-    wrapper.parentNode.appendChild(moveStart);
-    wrapper.parentNode.appendChild(moveEnd);
+    var carusela = new window.Carusela(document.getElementById('demo'));
+/*
 
     var folds = Math.ceil(element.offsetWidth / wrapper.offsetWidth);
 
     wrapper.addEventListener('scroll', function() {
         console.log(getCurrentFold(wrapper.scrollLeft + wrapper.offsetWidth, element.offsetWidth));
     });
-
+*/
 </script>
 </body>
 </html>
