@@ -13,6 +13,13 @@ h1 {
 	margin: 20px 20px 40px 20px;
 }
 
+h2 {
+	font-weight: 200;
+	font-size: 22px;
+	margin: 20px 20px 40px 20px;
+	text-align: center;
+}
+
 p {
 	font-weight: 200;
 	margin: 20px 20px 40px 20px;
@@ -101,6 +108,27 @@ button.backward {
 
 button.forward {
 	right: -60px;
+}
+
+.devices {
+	width: 350px;
+	margin: 0 auto;
+}
+
+.devices li {
+	display: inline-block;
+	text-align: center;
+	width: 50%;
+	font-weight: 200;
+	font-size: 80px;
+}
+
+.devices li.android {
+	color: #a4ca39;
+}
+
+.devices li.apple {
+	color: #a8b1b8;
 }
 
 .links {
