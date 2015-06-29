@@ -60,14 +60,14 @@ section {
 }
 
 .carusela ul {
-	height: 152px;
+	height: 100px;
 	display: inline-block;
 	white-space: nowrap;
 }
 
 .carusela ul li {
-	height: 152px;
-	width: 152px;
+	height: 100px;
+	width: 100px;
 	margin-left: 10px;
 	display: inline-block;
 }
