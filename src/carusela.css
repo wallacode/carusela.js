@@ -55,7 +55,7 @@ section {
 
 .carusela {
 	position: relative;
-	overflow: scroll;
+	overflow-x: scroll;
 	-webkit-overflow-scrolling: touch;
 }
 
