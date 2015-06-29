@@ -39,7 +39,7 @@
              * @returns {number}
              */
             backward = function() {
-                return wrapper.scrollLeft -= 100;
+                return wrapper.scrollLeft -= wrapper.offsetWidth;
             },
 
             /**
@@ -48,7 +48,7 @@
              * @returns {number}
              */
             forward = function() {
-                return wrapper.scrollLeft += 100;
+                return wrapper.scrollLeft += wrapper.offsetWidth;
             }
         ;
 
