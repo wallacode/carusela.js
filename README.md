@@ -1,6 +1,6 @@
 # Carusela.js
 
-Overflow scroll based carousel, aiming for minimalist JS code manipulations by using CSS 'scroll' as animation animation.
+Overflow scroll based carousel, aiming for minimalist JS code manipulations by using CSS 'scroll' as animation in order to get most native like feeling in both desktop and mobile touch enabled devices.
 
 [Check out the demo page](http://wallacode.github.io/carusela.js/)
 
