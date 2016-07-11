@@ -1,8 +1,6 @@
-(function (window) {
+(function (_) {
 
     'use strict';
-
-    window['Carusela'] = window['Carusela'] || {};
 
     /**
      * Carusela.js
@@ -14,71 +12,101 @@
      * * Number of folds in scroll
      * * Current fold
      *
-     * @param element
      * @returns {{}}
      */
-    window['Carusela'] = function (element) {
+
+    var
+    /**
+     * Default values
+     * @type {object}
+     */
+    config = {
+        direction : 'rtl',
+        scrolling : 'element' // or fold
+    };
+
+    _.Carusela = function (_config) {
+        if (_config) {
+            this.setConfig(_config);
+        }
+
         var wrapper         = document.createElement('div'),
             backwardElement = document.createElement('button'),
             forwardElement  = document.createElement('button'),
-
-            /**
-             * Get current position fold number
-             *
-             * @param scroll
-             * @param width
-             * @returns {number}
-             */
-            getCurrentFold = function(scroll, width) {
-                return Math.ceil(width / scroll);
-            },
-
-            /**
-             * Go x pixels backwards
-             *
-             * @returns {number}
-             */
-            backward = function() {
-                return wrapper.scrollLeft -= 100;
-            },
-
-            /**
-             * Go x pixels forward
-             *
-             * @returns {number}
-             */
-            forward = function() {
-                return wrapper.scrollLeft += 100;
-            }
+            element         = document.getElementById('demo'),
+            movingScale     = 100
         ;
 
-        wrapper.className           = 'carusela';
-        backwardElement.innerText   = 'Backward';
-        backwardElement.className   = 'backward';
-        forwardElement.innerText    = 'Forward';
-        forwardElement.className    = 'forward';
 
-        forwardElement.addEventListener('click', function() {
-            return forward();
-        });
+            wrapper.className           = 'carusela';
+            backwardElement.innerText   = 'Backward';
+            backwardElement.className   = 'backward';
+            forwardElement.innerText    = 'Forward';
+            forwardElement.className    = 'forward';
 
-        backwardElement.addEventListener('click', function() {
-            return backward();
-        });
+            wrapper.setAttribute('dir', config.direction);
 
-        // Add 'virtual' DOM elements
-        element.parentNode.replaceChild(wrapper, element);
-        wrapper.appendChild(element);
+        /**
+         * Build DOM structures
+         *
+         * @returns
+         */
+        function paintingProcess() {
+            // Add 'virtual' DOM elements
+            element.parentNode.replaceChild(wrapper, element);
+            wrapper.appendChild(element);
 
-        // Adding buttons
-        wrapper.parentNode.appendChild(backwardElement);
-        wrapper.parentNode.appendChild(forwardElement);
+            // Adding buttons
+            wrapper.parentNode.appendChild(backwardElement);
+            wrapper.parentNode.appendChild(forwardElement);
 
-        return {
-            'backward': backward,
-            'forward': forward
-        };
+            attachEvents();
+        }
+
+        /**
+         * Attach events
+         *
+         * @returns 
+         */
+        function attachEvents() {
+            forwardElement.addEventListener('click', function () {
+                wrapper.scrollLeft += movingScale;
+            });
+
+            backwardElement.addEventListener('click', function () {
+                wrapper.scrollLeft -= movingScale;
+            });
+        }
+
+         /**
+         * Get current position fold number
+         *
+         * @param scroll
+         * @param width
+         * @returns {number}
+         */
+        function getCurrentFold(scroll, width) {
+            return Math.ceil(width / scroll);
+        }
+
+        /**
+         * Get information on touch devices
+         *
+         * @returns {boolean}
+         */
+        function isTouchDevice() {
+
+        }
+
+        paintingProcess();
+    };
+
+    _.Carusela.prototype.setConfig = function (_config) {
+        for (var k in _config) {
+            if (_config.hasOwnProperty(k)) {
+                config[k] = _config[k];
+            }
+        }
     };
 
 }(window));
-// TEST
