@@ -22,7 +22,7 @@
      */
     config = {
         direction : 'rtl',
-        scrolling : 'element' // or fold
+        scrollingPer : 'element'
     };
 
     _.Carusela = function (_config) {
@@ -34,7 +34,14 @@
             backwardElement = document.createElement('button'),
             forwardElement  = document.createElement('button'),
             element         = document.getElementById('demo'),
-            movingScale     = 100
+            currenScrollPos = 0,
+            signDirection   = config.direction == 'ltr' ? '-' : '+',
+            counter         = document.getElementById('counter'),
+            index           = 1,
+            elemPerFold,
+            elemWidth,
+            scrollingPer,
+            totalElements
         ;
         
             wrapper.className           = 'carusela';
@@ -45,57 +52,69 @@
 
             wrapper.setAttribute('dir', config.direction);
 
+           setTimeout(function(){
+               // Bind image loading event
+                elemWidth         = element.children[1].offsetWidth + 10;
+                elemPerFold       = Math.floor(document.getElementsByClassName(wrapper.className)[0].offsetWidth / (elemWidth - 10));
+                totalElements     = elemWidth * (element.children.length - elemPerFold);
+                scrollingPer      = config.scrollingPer == 'element' ? 1 : elemPerFold;
+
+                if (config.scrollingPer !== 'element') counter.innerHTML = index + '/' + elemPerFold;
+           },0);
+
         /**
          * Build DOM structures
          *
          * @returns
+         * @public
          */
         this.init = function () {
             // Add 'virtual' DOM elements
             element.parentNode.replaceChild(wrapper, element);
             wrapper.appendChild(element);
 
-            if (!isTouchDevice()) {
+            if (!__isTouchDevice()) {
+                wrapper.style.overflow = 'hidden';
+
                 // Adding buttons
                 wrapper.parentNode.appendChild(backwardElement);
                 wrapper.parentNode.appendChild(forwardElement);
             }
 
-            attachEvents();
+            __attachEvents();
         };
 
         /**
          * Attach events
          *
-         * @returns 
+         * @returns
+         * @private
          */
-        function attachEvents() {
+        function __attachEvents() {
             forwardElement.addEventListener('click', function () {
-                wrapper.scrollLeft += movingScale;
+                if(totalElements <= currenScrollPos * scrollingPer) return;
+                if (config.scrollingPer !== 'element') counter.innerHTML = ++index + '/' + elemPerFold;
+
+                currenScrollPos += elemWidth;
+                element.style.transform = 'translateX(' + signDirection + currenScrollPos * scrollingPer + 'px)';
             });
 
             backwardElement.addEventListener('click', function () {
-                wrapper.scrollLeft -= movingScale;
-            });
-        }
+                if(currenScrollPos == 0) return;
+                if (config.scrollingPer !== 'element') counter.innerHTML = --index + '/' + elemPerFold;
 
-         /**
-         * Get current position fold number
-         *
-         * @param scroll
-         * @param width
-         * @returns {number}
-         */
-        function getCurrentFold(scroll, width) {
-            return Math.ceil(width / scroll);
+                currenScrollPos -= elemWidth;
+                element.style.transform = 'translateX(' + signDirection + currenScrollPos * scrollingPer + 'px)';
+            });
         }
 
         /**
          * Get information on touch devices
          *
          * @returns {boolean}
+         * @private
          */
-        function isTouchDevice() {
+        function __isTouchDevice() {
             return 'ontouchstart' in window ||       // works on most browsers
                     navigator.maxTouchPoints;       // works on IE10/11 and Surface
         }

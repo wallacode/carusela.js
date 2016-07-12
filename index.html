@@ -17,7 +17,7 @@
 <section>
     <ul id="demo">
         <li><img src="http://www.walla.co.il/images/apple/common-color-1.png" alt="Slide #1">
-        <li><span>בדיקה</span>
+        <li><img src="http://www.walla.co.il/images/apple/common-color-2.png" alt="Slide #2">
         <li><img src="http://www.walla.co.il/images/apple/common-color-3.png" alt="Slide #3">
         <li><img src="http://www.walla.co.il/images/apple/common-color-4.png" alt="Slide #4">
         <li><img src="http://www.walla.co.il/images/apple/common-color-5.png" alt="Slide #5">
@@ -30,6 +30,7 @@
         <li><img src="http://www.walla.co.il/images/apple/common-color-12.png" alt="Slide #12">
         <li><img src="http://www.walla.co.il/images/apple/common-color-13.png" alt="Slide #13">
     </ul>
+    <span id="counter"></span>
 </section>
 
 <hr />
@@ -48,7 +49,8 @@
 <script src="src/carusela.js"></script>
 <script>
     var carusela = new Carusela({
-        direction: 'ltr'
+        direction: 'ltr',
+        scrollingPer : 'fold'
     }).init();
 </script>
 </body>

@@ -69,12 +69,20 @@ section {
 .carusela ul li {
 	height: 152px;
 	width: 152px;
-	margin-left: 10px;
+	/*margin-right: 10px;*/
+    margin-left: 10px;
 	display: inline-block;
 }
 
 .carusela ul li:first-child {
 	margin-left: 0;
+}
+/*.carusela ul li:first-child {
+	margin-right: 0;
+}*/
+
+#demo{
+    transition: transform 500ms ease-in-out
 }
 
 button {
@@ -95,6 +103,14 @@ button {
 button:focus {
 	background: #c7c7c7;
 }
+
+/*button.backward {
+    right: -60px;
+}
+
+button.forward {
+    left: -60px;
+}*/
 
 button.backward {
 	left: -60px;
