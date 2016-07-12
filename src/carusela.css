@@ -66,20 +66,26 @@ section {
 	white-space: nowrap;
 }
 
-.carusela ul li {
+.carusela.ltr ul li {
 	height: 152px;
 	width: 152px;
-	/*margin-right: 10px;*/
     margin-left: 10px;
 	display: inline-block;
 }
 
-.carusela ul li:first-child {
+.carusela.rtl ul li {
+	height: 152px;
+	width: 152px;
+	margin-right: 10px;
+	display: inline-block;
+}
+
+.carusela.ltr ul li:first-child {
 	margin-left: 0;
 }
-/*.carusela ul li:first-child {
+.carusela.rtl ul li:first-child {
 	margin-right: 0;
-}*/
+}
 
 #demo{
     transition: transform 500ms ease-in-out
@@ -104,19 +110,19 @@ button:focus {
 	background: #c7c7c7;
 }
 
-/*button.backward {
+button.backward.rtl {
     right: -60px;
 }
 
-button.forward {
+button.forward.rtl {
     left: -60px;
-}*/
+}
 
-button.backward {
+button.backward.ltr {
 	left: -60px;
 }
 
-button.forward {
+button.forward.ltr {
 	right: -60px;
 }
 

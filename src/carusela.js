@@ -22,7 +22,8 @@
      */
     config = {
         direction : 'rtl',
-        scrollingPer : 'element'
+        scrollingPer : 'element',
+        toggleBackward : false
     };
 
     _.Carusela = function (_config) {
@@ -44,11 +45,11 @@
             totalElements
         ;
         
-            wrapper.className           = 'carusela';
+            wrapper.className           = 'carusela ' + config.direction;
             backwardElement.innerText   = 'Backward';
-            backwardElement.className   = 'backward';
+            backwardElement.className   = 'backward ' + config.direction;
             forwardElement.innerText    = 'Forward';
-            forwardElement.className    = 'forward';
+            forwardElement.className    = 'forward ' + config.direction;
 
             wrapper.setAttribute('dir', config.direction);
 
@@ -60,6 +61,8 @@
                 scrollingPer      = config.scrollingPer == 'element' ? 1 : elemPerFold;
 
                 if (config.scrollingPer !== 'element') counter.innerHTML = index + '/' + elemPerFold;
+                if(config.toggleBackward) backwardElement.style.display = 'none';
+
            },0);
 
         /**
@@ -95,16 +98,22 @@
                 if(totalElements <= currenScrollPos * scrollingPer) return;
                 if (config.scrollingPer !== 'element') counter.innerHTML = ++index + '/' + elemPerFold;
 
+                backwardElement.style.display = 'block';
                 currenScrollPos += elemWidth;
                 element.style.transform = 'translateX(' + signDirection + currenScrollPos * scrollingPer + 'px)';
+                
+                if(totalElements <= currenScrollPos * scrollingPer) forwardElement.style.display = 'none';
             });
 
             backwardElement.addEventListener('click', function () {
                 if(currenScrollPos == 0) return;
                 if (config.scrollingPer !== 'element') counter.innerHTML = --index + '/' + elemPerFold;
 
+                forwardElement.style.display = 'block';
                 currenScrollPos -= elemWidth;
                 element.style.transform = 'translateX(' + signDirection + currenScrollPos * scrollingPer + 'px)';
+
+                if(currenScrollPos == 0) backwardElement.style.display = 'none';
             });
         }
 
