@@ -36,8 +36,7 @@
             element         = document.getElementById('demo'),
             movingScale     = 100
         ;
-
-
+        
             wrapper.className           = 'carusela';
             backwardElement.innerText   = 'Backward';
             backwardElement.className   = 'backward';
@@ -51,17 +50,19 @@
          *
          * @returns
          */
-        function paintingProcess() {
+        this.init = function () {
             // Add 'virtual' DOM elements
             element.parentNode.replaceChild(wrapper, element);
             wrapper.appendChild(element);
 
-            // Adding buttons
-            wrapper.parentNode.appendChild(backwardElement);
-            wrapper.parentNode.appendChild(forwardElement);
+            if (!isTouchDevice()) {
+                // Adding buttons
+                wrapper.parentNode.appendChild(backwardElement);
+                wrapper.parentNode.appendChild(forwardElement);
+            }
 
             attachEvents();
-        }
+        };
 
         /**
          * Attach events
@@ -95,10 +96,11 @@
          * @returns {boolean}
          */
         function isTouchDevice() {
-
+            return 'ontouchstart' in window ||       // works on most browsers
+                    navigator.maxTouchPoints;       // works on IE10/11 and Surface
         }
-
-        paintingProcess();
+        
+        return this;
     };
 
     _.Carusela.prototype.setConfig = function (_config) {
