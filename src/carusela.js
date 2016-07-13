@@ -22,7 +22,8 @@
      */
     config = {
         direction : 'rtl',
-        scrolling : 'element' // or fold
+        scrollingPer : 'element',
+        toggleBackward : false
     };
 
     _.Carusela = function (_config) {
@@ -34,71 +35,100 @@
             backwardElement = document.createElement('button'),
             forwardElement  = document.createElement('button'),
             element         = document.getElementById('demo'),
-            movingScale     = 100
+            currenScrollPos = 0,
+            signDirection   = config.direction == 'ltr' ? '-' : '+',
+            counter         = document.getElementById('counter'),
+            index           = 1,
+            elemPerFold,
+            elemWidth,
+            scrollingPer,
+            totalElements
         ;
-
-
-            wrapper.className           = 'carusela';
+        
+            wrapper.className           = 'carusela ' + config.direction;
             backwardElement.innerText   = 'Backward';
-            backwardElement.className   = 'backward';
+            backwardElement.className   = 'backward ' + config.direction;
             forwardElement.innerText    = 'Forward';
-            forwardElement.className    = 'forward';
+            forwardElement.className    = 'forward ' + config.direction;
 
             wrapper.setAttribute('dir', config.direction);
+
+           setTimeout(function(){
+               // Bind image loading event
+                elemWidth         = element.children[1].offsetWidth + 10;
+                elemPerFold       = Math.floor(document.getElementsByClassName(wrapper.className)[0].offsetWidth / (elemWidth - 10));
+                totalElements     = elemWidth * (element.children.length - elemPerFold);
+                scrollingPer      = config.scrollingPer == 'element' ? 1 : elemPerFold;
+
+                if (config.scrollingPer !== 'element') counter.innerHTML = index + '/' + elemPerFold;
+                if(config.toggleBackward) backwardElement.style.display = 'none';
+
+           },0);
 
         /**
          * Build DOM structures
          *
          * @returns
+         * @public
          */
-        function paintingProcess() {
+        this.init = function () {
             // Add 'virtual' DOM elements
             element.parentNode.replaceChild(wrapper, element);
             wrapper.appendChild(element);
 
-            // Adding buttons
-            wrapper.parentNode.appendChild(backwardElement);
-            wrapper.parentNode.appendChild(forwardElement);
+            if (!__isTouchDevice()) {
+                wrapper.style.overflow = 'hidden';
 
-            attachEvents();
-        }
+                // Adding buttons
+                wrapper.parentNode.appendChild(backwardElement);
+                wrapper.parentNode.appendChild(forwardElement);
+            }
+
+            __attachEvents();
+        };
 
         /**
          * Attach events
          *
-         * @returns 
+         * @returns
+         * @private
          */
-        function attachEvents() {
+        function __attachEvents() {
             forwardElement.addEventListener('click', function () {
-                wrapper.scrollLeft += movingScale;
+                if(totalElements <= currenScrollPos * scrollingPer) return;
+                if (config.scrollingPer !== 'element') counter.innerHTML = ++index + '/' + elemPerFold;
+
+                backwardElement.style.display = 'block';
+                currenScrollPos += elemWidth;
+                element.style.transform = 'translateX(' + signDirection + currenScrollPos * scrollingPer + 'px)';
+                
+                if(totalElements <= currenScrollPos * scrollingPer) forwardElement.style.display = 'none';
             });
 
             backwardElement.addEventListener('click', function () {
-                wrapper.scrollLeft -= movingScale;
-            });
-        }
+                if(currenScrollPos == 0) return;
+                if (config.scrollingPer !== 'element') counter.innerHTML = --index + '/' + elemPerFold;
 
-         /**
-         * Get current position fold number
-         *
-         * @param scroll
-         * @param width
-         * @returns {number}
-         */
-        function getCurrentFold(scroll, width) {
-            return Math.ceil(width / scroll);
+                forwardElement.style.display = 'block';
+                currenScrollPos -= elemWidth;
+                element.style.transform = 'translateX(' + signDirection + currenScrollPos * scrollingPer + 'px)';
+
+                if(currenScrollPos == 0) backwardElement.style.display = 'none';
+            });
         }
 
         /**
          * Get information on touch devices
          *
          * @returns {boolean}
+         * @private
          */
-        function isTouchDevice() {
-
+        function __isTouchDevice() {
+            return 'ontouchstart' in window ||       // works on most browsers
+                    navigator.maxTouchPoints;       // works on IE10/11 and Surface
         }
-
-        paintingProcess();
+        
+        return this;
     };
 
     _.Carusela.prototype.setConfig = function (_config) {
