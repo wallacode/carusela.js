@@ -1,6 +1,6 @@
 html, body {
 	font-family: "Source Sans Pro", sans-serif;
-	max-width: 1000px;
+	max-width: 800px;
 	margin: 0 auto;
 	xdirection: rtl;
 	xtext-align: right;
@@ -11,13 +11,6 @@ h1 {
 	font-weight: 200;
 	font-size: 52px;
 	margin: 20px 20px 40px 20px;
-}
-
-h2 {
-	font-weight: 200;
-	font-size: 22px;
-	margin: 20px 20px 40px 20px;
-	text-align: center;
 }
 
 p {
@@ -33,7 +26,7 @@ hr {
 }
 
 footer {
-	margin: 50px 0;
+	margin-top: 50px;
 	text-align: center;
 	font-weight: 300;
 	line-height: 28px;
@@ -62,25 +55,40 @@ section {
 
 .carusela {
 	position: relative;
-	overflow-x: scroll;
+	overflow-x: auto;
+	overflow-y: hidden;
 	-webkit-overflow-scrolling: touch;
 }
 
 .carusela ul {
-	height: 100px;
+	height: 152px;
 	display: inline-block;
 	white-space: nowrap;
 }
 
-.carusela ul li {
-	height: 100px;
-	width: 100px;
-	margin-left: 10px;
+.carusela.ltr ul li {
+	height: 152px;
+	width: 152px;
+    margin-left: 10px;
 	display: inline-block;
 }
 
-.carusela ul li:first-child {
+.carusela.rtl ul li {
+	height: 152px;
+	width: 152px;
+	margin-right: 10px;
+	display: inline-block;
+}
+
+.carusela.ltr ul li:first-child {
 	margin-left: 0;
+}
+.carusela.rtl ul li:first-child {
+	margin-right: 0;
+}
+
+#demo{
+    transition: transform 500ms ease-in-out
 }
 
 button {
@@ -102,33 +110,20 @@ button:focus {
 	background: #c7c7c7;
 }
 
-button.backward {
+button.backward.rtl {
+    right: -60px;
+}
+
+button.forward.rtl {
+    left: -60px;
+}
+
+button.backward.ltr {
 	left: -60px;
 }
 
-button.forward {
+button.forward.ltr {
 	right: -60px;
-}
-
-.devices {
-	width: 350px;
-	margin: 0 auto;
-}
-
-.devices li {
-	display: inline-block;
-	text-align: center;
-	width: 50%;
-	font-weight: 200;
-	font-size: 80px;
-}
-
-.devices li.android {
-	color: #a4ca39;
-}
-
-.devices li.apple {
-	color: #a8b1b8;
 }
 
 .links {
