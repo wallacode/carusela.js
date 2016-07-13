@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>Carusela.js</title>
+    <meta charset="UTF-8">
     <link rel="shortcut icon" href="http://isc.wcdn.co.il/w13/v/icons/8/favicon.ico" type="image/x-icon" />
     <link href="src/carusela.css" type="text/css" rel="stylesheet"/>
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
@@ -15,30 +16,22 @@
 
 <section>
     <ul id="demo">
-        <li><img src="http://www.walla.co.il/images/apple/common-color-1.png" alt="Slide #1" width="100" height="100">
-        <li><img src="http://www.walla.co.il/images/apple/common-color-2.png" alt="Slide #2" width="100" height="100">
-        <li><img src="http://www.walla.co.il/images/apple/common-color-3.png" alt="Slide #3" width="100" height="100">
-        <li><img src="http://www.walla.co.il/images/apple/common-color-4.png" alt="Slide #4" width="100" height="100">
-        <li><img src="http://www.walla.co.il/images/apple/common-color-5.png" alt="Slide #5" width="100" height="100">
-        <li><img src="http://www.walla.co.il/images/apple/common-color-6.png" alt="Slide #6" width="100" height="100">
-        <li><img src="http://www.walla.co.il/images/apple/common-color-7.png" alt="Slide #7" width="100" height="100">
-        <li><img src="http://www.walla.co.il/images/apple/common-color-8.png" alt="Slide #8" width="100" height="100">
-        <li><img src="http://www.walla.co.il/images/apple/common-color-9.png" alt="Slide #9" width="100" height="100">
-        <li><img src="http://www.walla.co.il/images/apple/common-color-10.png" alt="Slide #10" width="100" height="100">
-        <li><img src="http://www.walla.co.il/images/apple/common-color-11.png" alt="Slide #11" width="100" height="100">
-        <li><img src="http://www.walla.co.il/images/apple/common-color-12.png" alt="Slide #12" width="100" height="100">
-        <li><img src="http://www.walla.co.il/images/apple/common-color-13.png" alt="Slide #13" width="100" height="100">
+        <li><img src="http://www.walla.co.il/images/apple/common-color-1.png" alt="Slide #1">
+        <li><img src="http://www.walla.co.il/images/apple/common-color-2.png" alt="Slide #2">
+        <li><img src="http://www.walla.co.il/images/apple/common-color-3.png" alt="Slide #3">
+        <li><img src="http://www.walla.co.il/images/apple/common-color-4.png" alt="Slide #4">
+        <li><img src="http://www.walla.co.il/images/apple/common-color-5.png" alt="Slide #5">
+        <li><img src="http://www.walla.co.il/images/apple/common-color-6.png" alt="Slide #6">
+        <li><img src="http://www.walla.co.il/images/apple/common-color-7.png" alt="Slide #7">
+        <li><img src="http://www.walla.co.il/images/apple/common-color-8.png" alt="Slide #8">
+        <li><img src="http://www.walla.co.il/images/apple/common-color-9.png" alt="Slide #9">
+        <li><img src="http://www.walla.co.il/images/apple/common-color-10.png" alt="Slide #10">
+        <li><img src="http://www.walla.co.il/images/apple/common-color-11.png" alt="Slide #11">
+        <li><img src="http://www.walla.co.il/images/apple/common-color-12.png" alt="Slide #12">
+        <li><img src="http://www.walla.co.il/images/apple/common-color-13.png" alt="Slide #13">
     </ul>
+    <span id="counter"></span>
 </section>
-
-<hr />
-
-<h2>Check out on your mobile device</h2>
-
-<ul class="devices">
-    <li class="android"><i class="fa fa-android"></i>
-    <li class="apple"><i class="fa fa-apple"></i>
-</ul>
 
 <hr />
 
@@ -50,22 +43,16 @@
 <hr />
 
 <footer>
-    <i class="fa fa-code"></i> Coded with <i class="fa fa-heart love"></i> by wallacode
+    <i class="fa fa-code"></i> with <i class="fa fa-heart love"></i> by wallacode
 </footer>
 
 <script src="src/carusela.js"></script>
 <script>
-    var carusela = new window.Carusela(document.getElementById('demo'));
-
-    // Analytics
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-    ga('create', 'UA-26264668-4', 'auto');
-    ga('send', 'pageview');
-
+    var carusela = new Carusela({
+        direction: 'rtl',
+        scrollingPer : 'element',  // fold
+        toggleBackward : true
+    }).init();
 </script>
 </body>
 </html>
