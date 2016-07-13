@@ -100,7 +100,7 @@
 
                 backwardElement.style.display = 'block';
                 currenScrollPos += elemWidth;
-                element.style.transform = 'translateX(' + signDirection + currenScrollPos * scrollingPer + 'px)';
+                __startAnimate();
                 
                 if(totalElements <= currenScrollPos * scrollingPer) forwardElement.style.display = 'none';
             });
@@ -111,10 +111,21 @@
 
                 forwardElement.style.display = 'block';
                 currenScrollPos -= elemWidth;
-                element.style.transform = 'translateX(' + signDirection + currenScrollPos * scrollingPer + 'px)';
+                __startAnimate();
 
                 if(currenScrollPos == 0) backwardElement.style.display = 'none';
             });
+        }
+        
+        /**
+         * Get information on touch devices
+         *
+         * @returns {boolean}
+         * @private
+         */
+        function __startAnimate() {
+            element.style.transform = 'translate3d(' + signDirection + currenScrollPos * scrollingPer + 'px, 0, 0)';
+            element.style.webkitTransform = 'translate3d(' + signDirection + currenScrollPos * scrollingPer + 'px, 0, 0)';
         }
 
         /**

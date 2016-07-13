@@ -2,9 +2,11 @@ html, body {
 	font-family: "Source Sans Pro", sans-serif;
 	max-width: 800px;
 	margin: 0 auto;
-	xdirection: rtl;
-	xtext-align: right;
 	-webkit-font-smoothing: antialiased;
+}
+
+header {
+    text-align: center;
 }
 
 h1 {
@@ -97,7 +99,10 @@ section {
 }
 
 #demo{
-    transition: transform 500ms ease-in-out
+    transition: transform 500ms ease-in-out;
+    -webkit-transition: -webkit-transform 500ms ease-in-out;
+    -webkit-transform: translate3d(0,0,0);
+    transform: translate3d(0,0,0);
 }
 
 button {
