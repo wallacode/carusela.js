@@ -45,15 +45,15 @@
             totalElements
         ;
         
-            wrapper.className           = 'carusela ' + config.direction;
-            backwardElement.innerText   = 'Backward';
-            backwardElement.className   = 'backward ' + config.direction;
-            forwardElement.innerText    = 'Forward';
-            forwardElement.className    = 'forward ' + config.direction;
+        wrapper.className           = 'carusela ' + config.direction;
+        backwardElement.innerText   = 'Backward';
+        backwardElement.className   = 'backward ' + config.direction;
+        forwardElement.innerText    = 'Forward';
+        forwardElement.className    = 'forward ' + config.direction;
 
-            wrapper.setAttribute('dir', config.direction);
+        wrapper.setAttribute('dir', config.direction);
 
-           setTimeout(function(){
+        setTimeout(function(){
                // Bind image loading event
                 elemWidth         = element.children[1].offsetWidth + 10;
                 elemPerFold       = Math.floor(document.getElementsByClassName(wrapper.className)[0].offsetWidth / (elemWidth - 10));
@@ -63,7 +63,7 @@
                 if (config.scrollingPer !== 'element') counter.innerHTML = index + '/' + elemPerFold;
                 if(config.toggleBackward) backwardElement.style.display = 'none';
 
-           },0);
+        },0);
 
         /**
          * Build DOM structures
