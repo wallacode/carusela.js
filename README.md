@@ -10,6 +10,11 @@ Overflow scroll based carousel, aiming for minimalist JS code manipulations by u
 
 * Back & forward buttons
 * Using -webkit-overflow-scrolling for momentum scrolling
+* RTL support (rtl as default)
+* Handle with touch devices
+* Smooth scrolling
+* Fold scrolling
+* Toggle backward button display
 
 ## Getting Started
 
@@ -23,7 +28,7 @@ Add to your code the carusela.js and carusela.css files.
 Initialize the Carusela class with any DOM element that contains any number of direct children.
 
 ```javascript
-var carusela = new window.Carusela(document.getElementById('demo'));
+var carusela = new Carusela();
 ```
 
 ```html
@@ -35,17 +40,27 @@ var carusela = new window.Carusela(document.getElementById('demo'));
 </ul>
 ```
 
+## Package Manager
+
+# Bower
+bower install walla-carusela
+
+## Optional
+
+    var carusela = new Carusela({
+        direction: 'ltr',             =>     rtl / ltr         (string)   
+        scrollingPer : 'element',     =>     fold / element    (string) 
+        toggleBackward : true         =>     true / false      (boolean)
+    }).init();
+
+
+
 ## Roadmap
 
 Stuff we need to add...
 
 * Add build
-* List on bower
 * Add tests
-* Disable buttons when no scroll available
-* Add RTL support
-* Add folds support
-* Add optional values
 
 ## Follow Us
 
