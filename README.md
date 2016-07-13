@@ -40,9 +40,8 @@ var carusela = new Carusela();
 </ul>
 ```
 
-## Package Manager
+## Bower
 
-# Bower
 bower install walla-carusela
 
 ## Optional
