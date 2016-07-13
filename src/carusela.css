@@ -19,10 +19,19 @@ p {
 }
 
 hr {
-	margin: 50px 0;
+	margin: 35px 0;
 	border: 0;
 	height: 1px;
 	background: #e7e7e7;
+}
+
+.qr-code-wrapper{
+    text-align: center;
+}
+
+.qr-code{
+    width: 200px;
+    height: 200px;
 }
 
 footer {
