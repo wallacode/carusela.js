@@ -1,0 +1,40 @@
+{
+  "name": "walla-carusela",
+  "version": "1.0.0",
+  "description": "Overflow scroll based carousel, adjustable for desktop and mobile",
+  "main": "src/carusela.js",
+  "dependencies": {},
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-contrib-concat": "^1.0.1",
+    "grunt-contrib-connect": "~0.5.0",
+    "grunt-contrib-jshint": "~0.6.3",
+    "grunt-contrib-watch": "~0.5.2",
+    "grunt-open": "~0.2.0",
+    "grunt-wiredep": "^3.0.1",
+    "load-grunt-tasks": "~0.1.0",
+    "time-grunt": "~0.1.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wallacode/carusela.js.git"
+  },
+  "keywords": [
+    "carusela",
+    "walla",
+    "carusela",
+    "walla"
+  ],
+  "engines": {
+    "node": ">=0.8.0"
+  },
+  "author": "walla",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/wallacode/carusela.js/issues"
+  },
+  "homepage": "https://github.com/wallacode/carusela.js#readme"
+}

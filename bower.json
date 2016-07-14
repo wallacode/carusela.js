@@ -1,14 +1,15 @@
 {
   "name": "walla-carusel",
-  "main": "src/carusela.js",
+  "main": [
+    "dist/carusela.js",
+    "dist/carusela.css"
+  ],
   "keywords": [
     "carusel",
     "walla",
     "walla-carusel",
     "carusel.js"
   ],
-
-  "moduleType": "globals",
   "homepage": "http://mail.walla.co.il",
   "title": "Walla! Mail",
   "description": "Overflow scroll based carousel, adjustable for desktop and mobile",
@@ -16,21 +17,17 @@
     "type": "git",
     "url": "https://github.com/wallacode/carusela.js.git"
   },
-
   "licenses": [
     {
       "type": "walla! News",
       "url": "http://www.walla.co.il"
     }
   ],
-
   "author": {
     "name": "The Mail Team",
     "url": "No soup for you"
   },
-
   "ignore": [
-    "**/.*",
     "node_modules",
     "bower_components"
   ]
