@@ -4,7 +4,7 @@ Overflow scroll based carousel, aiming for minimalist JS code manipulations by u
 
 [Check out the demo page](http://wallacode.github.io/carusela.js/)
 
-![Demo](https://raw.githubusercontent.com/wallacode/carusela.js/master/images/demo-1.png "Demo")
+![Demo](https://raw.githubusercontent.com/wallacode/carusela.js/master/app/images/demo-1.png "Demo")
 
 ## Features
 
