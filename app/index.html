@@ -3,16 +3,17 @@
 <head>
     <title>Carusela.js</title>
     <meta charset="UTF-8">
-    <link rel="shortcut icon" href="http://isc.wcdn.co.il/w13/v/icons/8/favicon.ico" type="image/x-icon" />
-    <link href="src/carusela.css" type="text/css" rel="stylesheet"/>
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <link rel="shortcut icon" href="http://isc.wcdn.co.il/w13/v/icons/8/favicon.ico" type="image/x-icon" />
+    <!-- bower:css -->
+    <!-- endbower -->
 </head>
 <body>
 
-<h1>Carusela.js</h1>
-
-<p>Overflow scroll based carousel, aiming for minimalist JS code manipulations.</p>
+<header>
+    <h1>Carusela.js</h1>
+    <p>Overflow scroll based carousel, aiming for minimalist JS code manipulations.</p>
+</header>
 
 <section>
     <ul id="demo">
@@ -35,6 +36,12 @@
 
 <hr />
 
+<div class="qr-code-wrapper">
+    <img class="qr-code" src="images/qr-code.jpg">
+</div>
+
+<hr />
+
 <ul class="links">
     <li><i class="fa fa-github"></i> <a href="https://github.com/eldadfux/carusela.js" target="_blank">View @Github</a>
     <li><i class="fa fa-twitter"></i> <a href="https://twitter.com/wallacode" target="_blank">Follow @Twitter</a>
@@ -46,10 +53,12 @@
     <i class="fa fa-code"></i> with <i class="fa fa-heart love"></i> by wallacode
 </footer>
 
-<script src="src/carusela.js"></script>
+<!-- bower:js -->
+<!-- endbower -->
+
 <script>
     var carusela = new Carusela({
-        direction: 'rtl',
+        direction: 'ltr',
         scrollingPer : 'element',  // fold
         toggleBackward : true
     }).init();

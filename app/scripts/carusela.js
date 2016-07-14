@@ -45,15 +45,15 @@
             totalElements
         ;
         
-            wrapper.className           = 'carusela ' + config.direction;
-            backwardElement.innerText   = 'Backward';
-            backwardElement.className   = 'backward ' + config.direction;
-            forwardElement.innerText    = 'Forward';
-            forwardElement.className    = 'forward ' + config.direction;
+        wrapper.className           = 'carusela ' + config.direction;
+        backwardElement.innerText   = 'Backward';
+        backwardElement.className   = 'backward ' + config.direction;
+        forwardElement.innerText    = 'Forward';
+        forwardElement.className    = 'forward ' + config.direction;
 
-            wrapper.setAttribute('dir', config.direction);
+        wrapper.setAttribute('dir', config.direction);
 
-           setTimeout(function(){
+        setTimeout(function(){
                // Bind image loading event
                 elemWidth         = element.children[1].offsetWidth + 10;
                 elemPerFold       = Math.floor(document.getElementsByClassName(wrapper.className)[0].offsetWidth / (elemWidth - 10));
@@ -63,7 +63,7 @@
                 if (config.scrollingPer !== 'element') counter.innerHTML = index + '/' + elemPerFold;
                 if(config.toggleBackward) backwardElement.style.display = 'none';
 
-           },0);
+        },0);
 
         /**
          * Build DOM structures
@@ -100,7 +100,7 @@
 
                 backwardElement.style.display = 'block';
                 currenScrollPos += elemWidth;
-                element.style.transform = 'translateX(' + signDirection + currenScrollPos * scrollingPer + 'px)';
+                __startAnimate();
                 
                 if(totalElements <= currenScrollPos * scrollingPer) forwardElement.style.display = 'none';
             });
@@ -111,10 +111,21 @@
 
                 forwardElement.style.display = 'block';
                 currenScrollPos -= elemWidth;
-                element.style.transform = 'translateX(' + signDirection + currenScrollPos * scrollingPer + 'px)';
+                __startAnimate();
 
                 if(currenScrollPos == 0) backwardElement.style.display = 'none';
             });
+        }
+        
+        /**
+         * Get information on touch devices
+         *
+         * @returns {boolean}
+         * @private
+         */
+        function __startAnimate() {
+            element.style.transform = 'translate3d(' + signDirection + currenScrollPos * scrollingPer + 'px, 0, 0)';
+            element.style.webkitTransform = 'translate3d(' + signDirection + currenScrollPos * scrollingPer + 'px, 0, 0)';
         }
 
         /**
