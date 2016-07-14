@@ -10,9 +10,10 @@
 </head>
 <body>
 
-<h1>Carusela.js</h1>
-
-<p>Overflow scroll based carousel, aiming for minimalist JS code manipulations.</p>
+<header>
+    <h1>Carusela.js</h1>
+    <p>Overflow scroll based carousel, aiming for minimalist JS code manipulations.</p>
+</header>
 
 <section>
     <ul id="demo">
@@ -55,8 +56,8 @@
 <script src="src/carusela.js"></script>
 <script>
     var carusela = new Carusela({
-        direction: 'rtl',
-        scrollingPer : 'element',  // fold
+        direction: 'ltr',
+        scrollingPer : 'fold',  // fold
         toggleBackward : true
     }).init();
 </script>
