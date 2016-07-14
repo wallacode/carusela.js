@@ -42,7 +42,7 @@ var carusela = new Carusela();
 
 ## Bower
 
-bower install walla-carusela
+    bower install walla-carusela
 
 ## Optional
 
