@@ -54,15 +54,14 @@
         wrapper.setAttribute('dir', config.direction);
 
         setTimeout(function(){
-               // Bind image loading event
-                elemWidth         = element.children[1].offsetWidth + 10;
-                elemPerFold       = Math.floor(document.getElementsByClassName(wrapper.className)[0].offsetWidth / (elemWidth - 10));
-                totalElements     = elemWidth * (element.children.length - elemPerFold);
-                scrollingPer      = config.scrollingPer == 'element' ? 1 : elemPerFold;
+             // Bind image loading event
+              elemWidth         = element.children[1].offsetWidth + 10;
+              elemPerFold       = Math.floor(document.getElementsByClassName(wrapper.className)[0].offsetWidth / (elemWidth - 10));
+              totalElements     = elemWidth * (element.children.length - elemPerFold);
+              scrollingPer      = config.scrollingPer == 'element' ? 1 : elemPerFold;
 
-                if (config.scrollingPer !== 'element') counter.innerHTML = index + '/' + elemPerFold;
-                if(config.toggleBackward) backwardElement.style.display = 'none';
-
+              if (config.scrollingPer !== 'element') counter.innerHTML = index + '/' + elemPerFold;
+              if(config.toggleBackward) backwardElement.style.display = 'none';
         },0);
 
         /**

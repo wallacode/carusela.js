@@ -18,18 +18,26 @@ Overflow scroll based carousel, aiming for minimalist JS code manipulations by u
 
 ## Getting Started
 
+# Install
+
 Add to your code the carusela.js and carusela.css files.
 
 ```html
-<link href="src/carusela.css" type="text/css" rel="stylesheet"/>
-<script src="src/carusela.js"></script>
+<link href="path-to-your-file/carusela.css" type="text/css" rel="stylesheet"/>
+<script src="path-to-your-file/carusela.js"></script>
 ```
+
+## With Bower
+
+    bower install walla-carusela
 
 Initialize the Carusela class with any DOM element that contains any number of direct children.
 
 ```javascript
-var carusela = new Carusela();
+var carusela = new Carusela().init();
 ```
+
+# Set html
 
 ```html
 <ul id="demo">
@@ -39,10 +47,6 @@ var carusela = new Carusela();
     <li><img src="http://www.walla.co.il/images/apple/common-color-4.png" alt="Slide #4">
 </ul>
 ```
-
-## Bower
-
-    bower install walla-carusela
 
 ## Optional
 
