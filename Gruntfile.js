@@ -9,12 +9,12 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-wiredep');
 
     // configurable paths
-    var yeomanConfig = {
-        app: 'app'
+    var appConfig = {
+        app: require('./bower.json').appPath || 'app',
     };
 
     grunt.initConfig({
-        yeoman: yeomanConfig,
+        yeoman: appConfig,
         watch: {
             options: {
                 livereload: '<%= connect.options.livereload %>'
@@ -36,9 +36,20 @@ module.exports = function(grunt) {
             livereload: {
                 options: {
                     open: true,
+                    debug: true,
                     base: [
                         '<%= yeoman.app %>'
-                    ]
+                    ],
+                    middleware: function (connect) {
+                        return [
+                            connect.static('.tmp'),
+                            connect().use(
+                                '/bower_components',
+                                connect.static('./bower_components')
+                            ),
+                            connect.static(appConfig.app)
+                        ];
+                    }
                 }
             },
             test: {
