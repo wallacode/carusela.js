@@ -8,11 +8,15 @@
      * Overflow scroll based carousel, Aiming for minimalist JS code manipulation.
      *
      * Features:
-     * * Back & forward buttons
-     * * Number of folds in scroll
-     * * Current fold
+     ** Back & forward buttons
+     ** Using -webkit-overflow-scrolling for momentum scrolling
+     ** RTL support (rtl as default)
+     ** Handle with touch devices
+     ** Smooth scrolling
+     ** Fold scrolling
+     ** Toggle backward button display
      *
-     * @returns {{}}
+     * @returns {object}
      */
 
     var
@@ -39,36 +43,38 @@
             signDirection   = config.direction == 'ltr' ? '-' : '+',
             counter         = document.getElementById('counter'),
             index           = 1,
+            margins,
             elemPerFold,
             elemWidth,
             scrollingPer,
             totalElements
         ;
-        
+
         wrapper.className           = 'carusela ' + config.direction;
         backwardElement.innerText   = 'Backward';
         backwardElement.className   = 'backward ' + config.direction;
         forwardElement.innerText    = 'Forward';
         forwardElement.className    = 'forward ' + config.direction;
-
         wrapper.setAttribute('dir', config.direction);
 
         setTimeout(function(){
-               // Bind image loading event
-                elemWidth         = element.children[1].offsetWidth + 10;
-                elemPerFold       = Math.floor(document.getElementsByClassName(wrapper.className)[0].offsetWidth / (elemWidth - 10));
-                totalElements     = elemWidth * (element.children.length - elemPerFold);
-                scrollingPer      = config.scrollingPer == 'element' ? 1 : elemPerFold;
+              margins           = parseInt(window.getComputedStyle(element.lastElementChild).marginLeft) ||
+                                  parseInt(window.getComputedStyle(element.lastElementChild).marginRight);
 
-                if (config.scrollingPer !== 'element') counter.innerHTML = index + '/' + elemPerFold;
-                if(config.toggleBackward) backwardElement.style.display = 'none';
+              elemWidth         = element.children[1].offsetWidth + margins;
+              elemPerFold       = Math.floor(document.getElementsByClassName(wrapper.className)[0].offsetWidth / (elemWidth - margins));
+              totalElements     = elemWidth * (element.children.length - elemPerFold);
+              scrollingPer      = config.scrollingPer == 'element' ? 1 : elemPerFold;
 
+              if (config.scrollingPer !== 'element') counter.innerHTML = index + '/' + elemPerFold;
+              if(config.toggleBackward) backwardElement.style.display = 'none';
         },0);
+
 
         /**
          * Build DOM structures
          *
-         * @returns
+         * @returns void
          * @public
          */
         this.init = function () {
@@ -88,9 +94,9 @@
         };
 
         /**
-         * Attach events
+         * Attach buttons events
          *
-         * @returns
+         * @return void
          * @private
          */
         function __attachEvents() {
@@ -101,7 +107,7 @@
                 backwardElement.style.display = 'block';
                 currenScrollPos += elemWidth;
                 __startAnimate();
-                
+
                 if(totalElements <= currenScrollPos * scrollingPer) forwardElement.style.display = 'none';
             });
 
@@ -116,11 +122,11 @@
                 if(currenScrollPos == 0) backwardElement.style.display = 'none';
             });
         }
-        
+
         /**
-         * Get information on touch devices
+         * Animate action
          *
-         * @returns {boolean}
+         * @returns void
          * @private
          */
         function __startAnimate() {
@@ -138,10 +144,16 @@
             return 'ontouchstart' in window ||       // works on most browsers
                     navigator.maxTouchPoints;       // works on IE10/11 and Surface
         }
-        
+
         return this;
     };
 
+  /**
+   * Reset carusel configuration
+   *
+   * @returns void
+   * @public
+   */
     _.Carusela.prototype.setConfig = function (_config) {
         for (var k in _config) {
             if (_config.hasOwnProperty(k)) {
