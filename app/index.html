@@ -7,6 +7,7 @@
     <link rel="shortcut icon" href="http://isc.wcdn.co.il/w13/v/icons/8/favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
     <!-- bower:css -->
+    <script src="styles/carusela.css"></script>
     <!-- endbower -->
 </head>
 <body>
@@ -18,19 +19,19 @@
 
 <section>
     <ul id="demo">
-        <li><img src="http://www.walla.co.il/images/apple/common-color-1.png" alt="Slide #1">
-        <li><img src="http://www.walla.co.il/images/apple/common-color-2.png" alt="Slide #2">
-        <li><img src="http://www.walla.co.il/images/apple/common-color-3.png" alt="Slide #3">
-        <li><img src="http://www.walla.co.il/images/apple/common-color-4.png" alt="Slide #4">
-        <li><img src="http://www.walla.co.il/images/apple/common-color-5.png" alt="Slide #5">
-        <li><img src="http://www.walla.co.il/images/apple/common-color-6.png" alt="Slide #6">
-        <li><img src="http://www.walla.co.il/images/apple/common-color-7.png" alt="Slide #7">
-        <li><img src="http://www.walla.co.il/images/apple/common-color-8.png" alt="Slide #8">
-        <li><img src="http://www.walla.co.il/images/apple/common-color-9.png" alt="Slide #9">
-        <li><img src="http://www.walla.co.il/images/apple/common-color-10.png" alt="Slide #10">
-        <li><img src="http://www.walla.co.il/images/apple/common-color-11.png" alt="Slide #11">
-        <li><img src="http://www.walla.co.il/images/apple/common-color-12.png" alt="Slide #12">
-        <li><img src="http://www.walla.co.il/images/apple/common-color-13.png" alt="Slide #13">
+        <li><img src="http://www.walla.co.il/images/apple/common-color-1.png" alt="Slide #1"></li>
+        <li><img src="http://www.walla.co.il/images/apple/common-color-2.png" alt="Slide #2"></li>
+        <li><img src="http://www.walla.co.il/images/apple/common-color-3.png" alt="Slide #3"></li>
+        <li><img src="http://www.walla.co.il/images/apple/common-color-4.png" alt="Slide #4"></li>
+        <li><img src="http://www.walla.co.il/images/apple/common-color-5.png" alt="Slide #5"></li>
+        <li><img src="http://www.walla.co.il/images/apple/common-color-6.png" alt="Slide #6"></li>
+        <li><img src="http://www.walla.co.il/images/apple/common-color-7.png" alt="Slide #7"></li>
+        <li><img src="http://www.walla.co.il/images/apple/common-color-8.png" alt="Slide #8"></li>
+        <li><img src="http://www.walla.co.il/images/apple/common-color-9.png" alt="Slide #9"></li>
+        <li><img src="http://www.walla.co.il/images/apple/common-color-10.png" alt="Slide #10"></li>
+        <li><img src="http://www.walla.co.il/images/apple/common-color-11.png" alt="Slide #11"></li>
+        <li><img src="http://www.walla.co.il/images/apple/common-color-12.png" alt="Slide #12"></li>
+        <li><img src="http://www.walla.co.il/images/apple/common-color-13.png" alt="Slide #13"></li>
     </ul>
     <span id="counter"></span>
 </section>
@@ -55,11 +56,12 @@
 </footer>
 
 <!-- bower:js -->
+<script src="scripts/carusela.js"></script>
 <!-- endbower -->
 
 <script>
     var carusela = new Carusela({
-        direction: 'ltr',
+        direction: 'rtl',
         scrollingPer : 'element',  // fold
         toggleBackward : true
     }).init();

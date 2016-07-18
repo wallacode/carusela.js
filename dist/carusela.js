@@ -44,7 +44,7 @@
             scrollingPer,
             totalElements
         ;
-        
+
         wrapper.className           = 'carusela ' + config.direction;
         backwardElement.innerText   = 'Backward';
         backwardElement.className   = 'backward ' + config.direction;
@@ -64,6 +64,7 @@
               if(config.toggleBackward) backwardElement.style.display = 'none';
         },0);
 
+     
         /**
          * Build DOM structures
          *
@@ -100,7 +101,7 @@
                 backwardElement.style.display = 'block';
                 currenScrollPos += elemWidth;
                 __startAnimate();
-                
+
                 if(totalElements <= currenScrollPos * scrollingPer) forwardElement.style.display = 'none';
             });
 
@@ -115,7 +116,7 @@
                 if(currenScrollPos == 0) backwardElement.style.display = 'none';
             });
         }
-        
+
         /**
          * Get information on touch devices
          *
@@ -137,7 +138,7 @@
             return 'ontouchstart' in window ||       // works on most browsers
                     navigator.maxTouchPoints;       // works on IE10/11 and Surface
         }
-        
+
         return this;
     };
 
