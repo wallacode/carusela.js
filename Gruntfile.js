@@ -10,12 +10,16 @@ module.exports = function(grunt) {
 
     // configurable paths
     var appConfig = {
-        app: require('./bower.json').appPath || 'app',
+        app: require('./bower.json').appPath || 'app'
     };
 
     grunt.initConfig({
         yeoman: appConfig,
         watch: {
+            bower: {
+                files: ['bower.json'],
+                tasks: ['wiredep']
+            },
             options: {
                 livereload: '<%= connect.options.livereload %>'
             },
@@ -69,7 +73,7 @@ module.exports = function(grunt) {
         },
         wiredep: {
           target: {
-            src: 'app/index.html' // point to your HTML file.
+            src: ['<%= yeoman.app %>/index.html']
           }
         }
     });
